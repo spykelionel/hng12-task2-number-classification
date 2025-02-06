@@ -1,76 +1,109 @@
-# HNG12 Stage 0 API
+# Number Classification API
 
-## Description
+A RESTful API that analyzes numbers and returns their mathematical properties along with interesting facts.
 
-A public API that returns basic information for HNG12 Stage 0.
+## Features
 
-## Setup
+- Number classification (prime, perfect, Armstrong)
+- Parity checking (odd/even)
+- Digit sum calculation
+- Integration with Numbers API for fun mathematical facts
+- CORS enabled
+- Error handling
+- Input validation
 
-### Prerequisites
+## Technologies Used
 
-- Node.js installed
-- Git installed
+- Node.js
+- Express.js
+- Axios
+- CORS
+- dotenv
 
-### Installation
+## API Specification
 
-1. Clone the repository:
+### Endpoint
 
-   ```sh
-   git clone https://github.com/spykelionel/hng12-task1-profile.git
-   ```
+```curl
+GET /api/classify-number?number={number}
+```
 
-2. Navigate to the project folder:
-
-   ```sh
-   cd hng12-api
-   ```
-
-3. Install dependencies:
-
-   ```sh
-   npm install
-   ```
-
-4. Create a `.env` file in the root directory and add your email:
-
-   ```sh
-   EMAIL=your-email@example.com
-   ```
-
-5. Run the project in development mode:
-
-   ```sh
-   npm run dev
-   ```
-
-## API Endpoint
-
-### GET /
-
-Returns basic information about the developer.
-
-**Response Format:**
+### Success Response (200 OK)
 
 ```json
 {
-  "email": "your-email@example.com",
-  "current_datetime": "2025-01-30T09:30:00Z",
-  "github_url": "https://github.com/spykelionel/hng12-task1-profile.git"
+  "number": 371,
+  "is_prime": false,
+  "is_perfect": false,
+  "properties": ["armstrong", "odd"],
+  "digit_sum": 11,
+  "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
 }
+```
 
+### Error Response (400 Bad Request)
+
+```json
+{
+  "number": "invalid_input",
+  "error": true
+}
+```
+
+## Setup and Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/number-classification-api.git
+```
+
+2. Install dependencies:
+
+```bash
+cd number-classification-api
+npm install
+```
+
+3. Create a `.env` file in the root directory:
+
+```
+PORT=8003
+```
+
+4. Start the server:
+
+```bash
+npm start
+```
+
+## Testing
+
+You can test the API using cURL or Postman:
+
+```bash
+curl "http://localhost:8003/api/classify-number?number=371"
 ```
 
 ## Deployment
 
-The API is deployed on Render.
+This API can be deployed to platforms like:
 
-- **Live API URL:** `<your-deployed-url>`
+- Heroku
+- Railway
+- Render
+- DigitalOcean
 
-## Documentation
+Make sure to set up the appropriate environment variables on your deployment platform.
 
-For more details, visit the repository: [GitHub Repository](https://github.com/spykelionel/hng12-task1-profile.git)
+## Contributing
 
-# Related Links
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-[Hire Node.js Developers](https://hng.tech/hire/nodejs-developers)
+## License
 
+This project is licensed under the MIT License.
